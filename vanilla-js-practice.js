@@ -6,11 +6,18 @@ class Node {
     }
 }
 
-const depthFirstValues = (root) => {
+const breadthFirstValues = (root) => {
     if (root === null) return [];
-    const leftValues = depthFirstValues(root.left);
-    const rightValues = depthFirstValues(root.right);
-    return [ root.val, ...leftValues, ...rightValues];
+
+    const result = []
+    const queue = [ root ]
+    while (queue.length > 0) {
+        const current = queue.shift();
+        result.push(current.val);
+        if (current.left !== null) queue.push(current.left);
+        if (current.right !== null) queue.push(current.right);    
+    }
+    return result;
 }
 
 
@@ -38,4 +45,5 @@ e.left = g;
         //    /    
         //   g
 
-console.log(depthFirstValues(a))
+console.log(breadthFirstValues(a));
+
