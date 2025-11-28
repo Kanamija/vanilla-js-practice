@@ -9,13 +9,12 @@ class Node {
 const treeSum = (root) => {
     if (root === null) return [];
     let result = 0
-    const stack = [ root ]
-    while (stack.length > 0) {
-        const current = stack.pop();
+    const queue = [ root ]
+    while (queue.length > 0) {
+        const current = queue.shift();
         result += current.val;
-        if (current.right !== null) stack.push(current.right);    
-        if (current.left !== null) stack.push(current.left);
-        
+        if (current.left !== null) queue.push(current.left);
+        if (current.right !== null) queue.push(current.right);    
     }
     return result;
 }
