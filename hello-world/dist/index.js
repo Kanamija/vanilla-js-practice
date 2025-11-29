@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function calculateTax(income, taxYear) {
-    if (taxYear < 2022)
-        return income * 1.2;
-    return income * 1.3;
+function kgToLbs(weight) {
+    if (typeof weight === 'number')
+        return weight * 2.2;
+    else
+        return parseInt(weight) * 2.2;
 }
-console.log(calculateTax(120000, 2020));
+kgToLbs(10);
+kgToLbs('10kg');
 //# sourceMappingURL=index.js.map
