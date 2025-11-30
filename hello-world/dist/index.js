@@ -1,7 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let quantity = 50;
-console.log(quantity);
-let length = 'cm';
-console.log(length);
+function greet(name) {
+    if (name)
+        console.log(name.toLocaleUpperCase);
+    else
+        console.log('Hola!');
+}
+greet(null);
 //# sourceMappingURL=index.js.map
