@@ -1,25 +1,16 @@
-// type Employee = {
-//     readonly id: number,
-//     name: string,
-//     retire: (date: Date) => void
-// }
+type Draggable = {
+    drag : () => void
+};
 
-// let employee: Employee {
-    
-// } =  { 
-//     id: 1, 
-//     name: "Mosh",
-//     retire: (date: Date) => {
-//         console.log(date);
-//     }
-// }
+type Resizable = {
+    resize: () => void
+};
 
-function kgToLbs(weight: number | string) : number {
-    if (typeof weight === 'number')
-        return weight * 2.2;
-    else 
-        return parseInt(weight) * 2.2;
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+    drag: () => {},
+    resize: () => {}
 }
 
-kgToLbs(10);
-kgToLbs('10kg')
+console.log(textBox);

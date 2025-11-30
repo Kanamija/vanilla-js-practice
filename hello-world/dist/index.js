@@ -1,11 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function kgToLbs(weight) {
-    if (typeof weight === 'number')
-        return weight * 2.2;
-    else
-        return parseInt(weight) * 2.2;
-}
-kgToLbs(10);
-kgToLbs('10kg');
+let textBox = {
+    drag: () => { },
+    resize: () => { }
+};
+console.log(textBox);
 //# sourceMappingURL=index.js.map
