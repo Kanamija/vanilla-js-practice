@@ -1,8 +1,10 @@
-function greet(name: string | null) {
-    if (name)
-        console.log(name.toLocaleUpperCase)
-    else 
-        console.log('Hola!')
+type Customer = {
+    birthday?: Date
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0 ? null : { birthday: new Date() }
 }
 
-greet(null)
+let customer = getCustomer(1);
+console.log(customer?.birthday?.getFullYear());
