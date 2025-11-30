@@ -1,16 +1,8 @@
-type Draggable = {
-    drag : () => void
-};
+type Quantity = 50 | 100;
+let quantity: Quantity = 50;
+console.log(quantity);
 
-type Resizable = {
-    resize: () => void
-};
+type Metric = 'cm' | 'inch';
+let length: Metric = 'cm';
+console.log(length);
 
-type UIWidget = Draggable & Resizable;
-
-let textBox: UIWidget = {
-    drag: () => {},
-    resize: () => {}
-}
-
-console.log(textBox);
