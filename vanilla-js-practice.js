@@ -6,63 +6,49 @@ class Node {
     }
 }
 
-const a = new Node('a');
-const b = new Node('b')
-const c = new Node('c')
-const d = new Node('d')
-const e = new Node('e')
-const f = new Node('f')
-const g = new Node('g');
-
+const a = new Node(1);
+const b = new Node(6);
+const c = new Node(0);
+const d = new Node(3);
+const e = new Node(-6);
+const f = new Node(2);
+const g = new Node(2);
+const h = new Node(2);
 
 a.left = b;
 a.right = c;
 b.left = d;
 b.right = e;
+e.left = g;
 c.right = f;
-f.left = g;
-
-//      a
-//     / \
-//    b   c
-//   / \   \
-//  d   e   f  
-    //    /
-    //    g        
+f.right = h;
 
 
-// const depthFirstValues = (root) => {
-//     if (root === null) return [];
-//     const values = [];
-//     const stack = [ root ];
-//     while (stack.length > 0) {
-//         const current = stack.pop();
+//     a                           1
+//    / \                         / \   
+//   b   c                       6   0    
+//  / \   \                     / \   \   
+// d   e   f                   3   -6  2
+//    /     \                      /    \   
+//   g       h                    2      2   
 
-//         // console.log('current.val', current.val)
-//         values.push(current.val);
-
-//         // console.log('current.right', current.right);
-//         // console.log('current.left', current.left);
-
-//         if (current.right) stack.push(current.right);
-//         if(current.left) stack.push(current.left);
-//     }
-//     return values;
-
-// }
-
-
-
-// console.log(depthFirstValues(null));
-
-const depthFirstValues = (root) => {
+const treeSum = (root) => {
     if (root === null) return [];
-    const leftValues = depthFirstValues(root.left);
-    const rightValues = depthFirstValues(root.right); 
-     console.log('leftValues', leftValues);
-     console.log('rightValues', rightValues);
-    return [root.val, ...leftValues, ...rightValues];
+    let sumVal = 0;
+    const queue = [ root ];
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        sumVal += current.val;
+        if(current.left) queue.push(current.left);
+        if(current.right) queue.push(current.right);
+    }
+    return sumVal;
 }
 
+console.log(treeSum(a));
 
-console.log(depthFirstValues(a));
+
+
+
+
