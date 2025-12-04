@@ -8,9 +8,9 @@ class Node {
 
 const a = new Node(1);
 const b = new Node(6);
-const c = new Node(0);
+const c = new Node(1);
 const d = new Node(3);
-const e = new Node(-6);
+const e = new Node(6);
 const f = new Node(2);
 const g = new Node(2);
 const h = new Node(2);
@@ -32,23 +32,27 @@ f.right = h;
 //    /     \                      /    \   
 //   g       h                    2      2   
 
-const treeSum = (root) => {
-    if (root === null) return [];
-    let sumVal = 0;
-    const queue = [ root ];
+// const treeSum = (root) => {
+//     if (root === null) return [];
+//     let sumVal = 0;
+//     const queue = [ root ];
 
-    while (queue.length > 0) {
-        const current = queue.shift();
-        sumVal += current.val;
-        if(current.left) queue.push(current.left);
-        if(current.right) queue.push(current.right);
-    }
-    return sumVal;
+//     while (queue.length > 0) {
+//         const current = queue.shift();
+//         sumVal += current.val;
+//         if(current.left) queue.push(current.left);
+//         if(current.right) queue.push(current.right);
+//     }
+//     return sumVal;
+// }
+
+// console.log(treeSum(a));
+
+const treeSum = (root) => {
+    if (root === null) return 1;
+return root.val * treeSum(root.left) * treeSum(root.right);
 }
 
+
 console.log(treeSum(a));
-
-
-
-
 
