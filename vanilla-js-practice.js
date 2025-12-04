@@ -6,39 +6,63 @@ class Node {
     }
 }
 
-const treeSum = (root) => {
-    if (root === null) return [];
-    let result = 0
-    const queue = [ root ]
-    while (queue.length > 0) {
-        const current = queue.shift();
-        result += current.val;
-        if (current.left !== null) queue.push(current.left);
-        if (current.right !== null) queue.push(current.right);    
-    }
-    return result;
-}
+const a = new Node('a');
+const b = new Node('b')
+const c = new Node('c')
+const d = new Node('d')
+const e = new Node('e')
+const f = new Node('f')
+const g = new Node('g');
 
-
-
-const a = new Node(3);
-const b = new Node(11);
-const c = new Node(4);
-const d = new Node(4);
-const e = new Node(-2);
-const f = new Node(1);
 
 a.left = b;
 a.right = c;
 b.left = d;
 b.right = e;
 c.right = f;
+f.left = g;
 
-//       3
-//    /    \
-//   11     4
-//  / \      \
-// 4   -2     1
+//      a
+//     / \
+//    b   c
+//   / \   \
+//  d   e   f  
+    //    /
+    //    g        
 
-console.log(treeSum(a)); // -> 21
 
+// const depthFirstValues = (root) => {
+//     if (root === null) return [];
+//     const values = [];
+//     const stack = [ root ];
+//     while (stack.length > 0) {
+//         const current = stack.pop();
+
+//         // console.log('current.val', current.val)
+//         values.push(current.val);
+
+//         // console.log('current.right', current.right);
+//         // console.log('current.left', current.left);
+
+//         if (current.right) stack.push(current.right);
+//         if(current.left) stack.push(current.left);
+//     }
+//     return values;
+
+// }
+
+
+
+// console.log(depthFirstValues(null));
+
+const depthFirstValues = (root) => {
+    if (root === null) return [];
+    const leftValues = depthFirstValues(root.left);
+    const rightValues = depthFirstValues(root.right); 
+     console.log('leftValues', leftValues);
+     console.log('rightValues', rightValues);
+    return [root.val, ...leftValues, ...rightValues];
+}
+
+
+console.log(depthFirstValues(a));
